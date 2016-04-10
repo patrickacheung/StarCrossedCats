@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :constellations do
+    collection {post :import}
+  end
+
   resources :user
   #get 'welcome/index' => 'welcome#index'
 
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'admin', :to => "access#index"
   match ':controller(/:action(/:id))', :via => [:get, :post]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
